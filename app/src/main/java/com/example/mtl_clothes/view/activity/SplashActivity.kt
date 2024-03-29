@@ -1,5 +1,6 @@
 package com.example.mtl_clothes.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -17,8 +18,9 @@ import com.example.mtl_clothes.viewmodel.CommonVM
 class SplashActivity : BaseActivity<ActivitySplashBinding, CommonVM>() {
     override fun initView() {
         Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this,IntroActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK))
 
-        },3000)
+        }, 3000)
     }
 
     override fun getClassVM(): Class<CommonVM> {
@@ -26,7 +28,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, CommonVM>() {
     }
 
     override fun initViewBinding(): ActivitySplashBinding {
-        return ActivitySplashBinding.inflate(layoutInflater,null,false)
+        return ActivitySplashBinding.inflate(layoutInflater, null, false)
     }
 
 

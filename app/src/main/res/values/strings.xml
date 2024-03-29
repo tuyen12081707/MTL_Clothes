@@ -45,4 +45,25 @@
     </string>
     <string name="login">Login</string>
     <string name="sign_up">Sign up</string>
+    <string name="geeta">Geeta.</string>
+    <string name="create_your_fashion_in_your_own_way">Create your fashion in your own way</string>
+    <string name="each_men_and_women_has_their_own_style_geeta_help_you_to_create_your_unique_style">Each men and women has their own style, Geeta help you to create your unique style.</string>
+    <string name="log_in">LOG IN</string>
+    <string name="register">Register</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="yay_you_re_back_thanks_for_shopping_with_us_we_have_excited_deals_and_promotions_going_on_grab_your_pick_now">Yay! You\'re back! Thanks for shopping with us. We have excited deals and promotions going on, grab your pick now!</string>
+    <string name="email_address">Email address</string>
+    <string name="password">Password</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="not_registered_yet">Not registered yet?</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="get_s_started_with_geeta">Get’s started with Geeta.</string>
+    <string name="log_in_normal"><u>Log in</u></string>
+    <string name="by_joining_i_agree_to_receive_emails_from_geeta">By joining I agree to receive emails from Geeta.</string>
+    <string name="your_name">Your name</string>
+    <string name="orders">Orders</string>
+    <string name="log_out">LOG OUT</string>
 </resources>

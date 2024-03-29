@@ -9,13 +9,12 @@ import androidx.lifecycle.get
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseActivity<B:ViewBinding,M : ViewModel>: AppCompatActivity() {
-    protected var binding: B? = null
+    protected  val binding: B by lazy { initViewBinding() }
     protected var viewModel: M? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = initViewBinding()
         viewModel = ViewModelProvider(this)[getClassVM()]
-        setContentView(binding!!.root)
+        setContentView(binding.root)
         val decorView = window.decorView
         decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                 or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
@@ -43,7 +42,7 @@ abstract class BaseActivity<B:ViewBinding,M : ViewModel>: AppCompatActivity() {
         }
     }
 
-    protected abstract fun initViewBinding(): B?
+    protected abstract fun initViewBinding(): B
     
 }
 
