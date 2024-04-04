@@ -67,4 +67,10 @@
     <string name="orders">Orders</string>
     <string name="log_out">LOG OUT</string>
     <string name="filter_sort"><![CDATA[Filter & Sort]]></string>
+    <string name="description">DESCRIPTION</string>
+    <string name="lorem">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book...detail</string>
+    <string name="select_size">SELECT SIZE</string>
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="my_cart">My Cart</string>
+    <string name="go_to_checkout">GO TO CHECKOUT</string>
 </resources>

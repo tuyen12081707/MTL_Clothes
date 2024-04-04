@@ -13,12 +13,19 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.mtl_clothes.R
 import com.example.mtl_clothes.databinding.ActivitySplashBinding
+import com.example.mtl_clothes.ultis.Common
 import com.example.mtl_clothes.viewmodel.CommonVM
 
 class SplashActivity : BaseActivity<ActivitySplashBinding, CommonVM>() {
     override fun initView() {
+        Common.listOrder.clear()
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this,IntroActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+            if(Common.getLoginSuccess(this)){
+                startActivity(Intent(this,MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+
+            }else{
+                startActivity(Intent(this,IntroActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+            }
 
         }, 3000)
     }
