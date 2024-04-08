@@ -1,16 +1,11 @@
-package com.example.mtl_clothes.model
+package com.example.mtl_clothes.api.res
 
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
-class ProductModel(
-    @SerializedName("message")
-    var message: String,
-    @SerializedName("product")
-    var product: Product
-) : Serializable
+class CategoriesRes(
+    @SerializedName("_id")
+    val id: String,
 
-data class Product(
     @SerializedName("name")
     val name: String,
 
@@ -37,9 +32,6 @@ data class Product(
 
     @SerializedName("size")
     val size: MutableList<String>,
-
-    @SerializedName("_id")
-    val id: String,
 
     @SerializedName("createdAt")
     val createdAt: String,

@@ -1,9 +1,9 @@
-package com.example.mtl_clothes.model
+package com.example.mtl_clothes.api.req
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class ProductModel(
+class ProductReq (
     @SerializedName("message")
     var message: String,
     @SerializedName("product")
