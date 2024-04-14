@@ -54,7 +54,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
             Common.setUserID(this,"")
             Common.setBearerToken(this,"")
             binding.tvName.text = "Admin"
-            binding.tvEmail.text = "admin@gmail.com"
+            binding.tvEmail.text = "admin123@gmail.com"
 
         }
         binding.lnAddress.setOnClickListener {
