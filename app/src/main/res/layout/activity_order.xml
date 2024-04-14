@@ -84,7 +84,11 @@
 
         <TextView
             android:id="@+id/tv_total_prices"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
+            android:gravity="center"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/_10sdp"

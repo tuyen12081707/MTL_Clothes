@@ -1,22 +1,16 @@
 package com.example.mtl_clothes.view.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.Gravity
-import android.view.View
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.GravityCompat
-import com.example.mtl_clothes.R
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.mtl_clothes.base_interface.IProduct
 import com.example.mtl_clothes.databinding.ActivityMainBinding
-import com.example.mtl_clothes.model.ProductModel
+import com.example.mtl_clothes.api.res.ProductRes
 import com.example.mtl_clothes.ultis.Common
 import com.example.mtl_clothes.ultis.setVisible
 import com.example.mtl_clothes.view.adapter.CategoryAdapter
 import com.example.mtl_clothes.view.adapter.ProductAdapter
-import com.example.mtl_clothes.viewmodel.CommonVM
 import com.example.mtl_clothes.viewmodel.MainVM
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager
@@ -29,7 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
     var listCategories: MutableList<String> = mutableListOf(
         "Popular", "Mens", "Women", "Sales"
     )
-    var listProduct: MutableList<ProductModel> = mutableListOf()
+    var listProduct: MutableList<ProductRes> = mutableListOf()
     var resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
@@ -38,14 +32,35 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         }
 
     override fun initView() {
-        addSampleList()
+        //callapi product
+        viewModel.getAllProduct(this)
+        showDialog(this)
         handleCategories()
         handleProduct()
         binding.ivMenu.setOnClickListener {
             openDrawer(true)
         }
-    }
+        var user = Common.getLoginRes(this)
+        binding.tvName.text = user?.user?.username
+        binding.tvEmail.text = user?.user?.email
+        binding.drawer.setOnClickListener {
 
+        }
+        binding.ivClose.setOnClickListener {
+            openDrawer(false)
+        }
+        binding.logout.setOnClickListener {
+            Common.clearLoginRes(this)
+            Common.setUserID(this,"")
+            Common.setBearerToken(this,"")
+            binding.tvName.text = "Admin"
+            binding.tvEmail.text = "admin@gmail.com"
+
+        }
+        binding.lnAddress.setOnClickListener {
+
+        }
+    }
     fun openDrawer(isOpen: Boolean) {
         if (isOpen) {
             binding.drawerLayout.openDrawer(GravityCompat.END)
@@ -56,80 +71,37 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 
     override fun onResume() {
         super.onResume()
-        if(Common.listOrder.isNotEmpty()){
+        if (Common.listOrder.isNotEmpty()) {
             binding.ivCountOrder.setVisible(true)
             binding.ivCountOrder.text = Common.listOrder.size.toString()
             binding.btnOrder.setOnClickListener {
-                resultLauncher.launch(Intent(this,OrderActivity::class.java))
+                resultLauncher.launch(Intent(this, OrderActivity::class.java))
             }
-        }else{
+        } else {
             binding.ivCountOrder.setVisible(false)
 
         }
     }
 
-    private fun addSampleList() {
-        listProduct.add(
-            ProductModel(
-                0,
-                "Pink Hoodie",
-                "40",
-                false,
-                "Geeta Mens",
-                "https://ih1.redbubble.net/image.4373474571.0812/ssrco,classic_tee,womens,fafafa:ca443f4786,front_alt,square_product,600x600.jpg",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-            )
-        )
-        listProduct.add(
-            ProductModel(
-                1,
-                "Leather Jacket",
-                "48",
-                false,
-                "Geeta Mens",
-                "https://ih1.redbubble.net/image.5165706440.7185/ssrco,slim_fit_t_shirt,womens,101010:01c5ca27c6,front,square_product,600x600.jpg",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-            )
-        )
-        listProduct.add(
-            ProductModel(
-                2,
-                "Washed Blue Jeans",
-                "36",
-                false,
-                "Geeta Mens",
-                "https://ih1.redbubble.net/image.4373474571.0812/ssrco,classic_tee,womens,fafafa:ca443f4786,front_alt,square_product,600x600.jpg",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-            )
-        )
-        listProduct.add(
-            ProductModel(
-                3,
-                "Printed Shirt",
-                "28",
-                false,
-                "Geeta Mens",
-                "https://ih1.redbubble.net/image.5165706440.7185/ssrco,slim_fit_t_shirt,womens,101010:01c5ca27c6,front,square_product,600x600.jpg",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-            )
-        )
-    }
 
     private fun handleProduct() {
         productAdapter = ProductAdapter(this, object : IProduct {
-            override fun callBackProduct(productModel: ProductModel) {
+            override fun callBackProduct(productRes: ProductRes) {
                 var intent = Intent(this@MainActivity, ProductDetail::class.java)
-                intent.putExtra(Common.KEY_PRODUCT_ORDER, productModel)
+                intent.putExtra(Common.KEY_PRODUCT_ORDER, productRes.id)
                 resultLauncher.launch(intent)
-            }
-
-            override fun callbackFavorite(position: Int, isFavorites: Boolean) {
-                productAdapter.updateDateByPosition(position, !isFavorites)
             }
 
         })
         binding.rcvProduct.adapter = productAdapter
-        productAdapter.updateData(listProduct)
+        viewModel.listProduct.observe(this) {
+            if (it.isNotEmpty()) {
+                disableDialog(this)
+                listProduct.clear()
+                listProduct.addAll(it)
+                productAdapter.updateData(listProduct)
+            }
+        }
     }
 
     private fun handleCategories() {

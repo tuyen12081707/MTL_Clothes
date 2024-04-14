@@ -4,31 +4,30 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.example.mtl_clothes.api.res.ProductRes
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.lang.Exception
 
-class MainVM : CommonVM() {
-    var listProduct: MutableLiveData<MutableList<ProductRes>> = MutableLiveData()
+class ProductDetailVM:CommonVM() {
+    var productDetail: MutableLiveData<ProductRes> = MutableLiveData()
 
-    fun getAllProduct(context:Context) {
+    fun getAllProduct(context: Context,id:String) {
 
-        val call = getApi().getAllProduct()
-        call.enqueue(object : Callback<MutableList<ProductRes>> {
+        val call = getApi().getProductDetail(id)
+        call.enqueue(object : Callback<ProductRes> {
 
 
             override fun onResponse(
-                call: Call<MutableList<ProductRes>>,
-                response: Response<MutableList<ProductRes>>
+                call: Call<ProductRes>,
+                response: Response<ProductRes>
             ) {
                 try {
                     Log.d("productres==",response.message().toString())
                     if(response.isSuccessful){
-                        Log.d("productres==", response.body()?.size.toString())
-                        listProduct.postValue(response.body())
+                        Log.d("productDetaill==", response.body()?.size.toString())
+                        productDetail.postValue(response.body())
                     }else{
                         Log.d("failed===","failed===")
                     }
@@ -38,10 +37,12 @@ class MainVM : CommonVM() {
 
             }
 
-            override fun onFailure(call: Call<MutableList<ProductRes>>, t: Throwable) {
-                Toast.makeText(context,t.message.toString(),Toast.LENGTH_SHORT).show()
+            override fun onFailure(call: Call<ProductRes>, t: Throwable) {
+                Toast.makeText(context,t.message.toString(), Toast.LENGTH_SHORT).show()
             }
+
 
         })
     }
+
 }

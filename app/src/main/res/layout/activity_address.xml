@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.AddressActivity">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/_10sdp"
+            android:paddingStart="0dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/shipping_address"
+            android:textColor="#2D0C57"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:minHeight="10dp"
+        android:text="@string/shipping_address"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3" />
+
+    <EditText
+        android:id="@+id/edt_shipping_address"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:hint="Ha Noi"
+        android:textSize="12sp"
+        android:fontFamily="@font/lato_regular"
+        android:textColor="@color/black"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:textColorHint="#A1A1A1"
+        android:background="@drawable/bg_edit_text"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+    <TextView
+        android:id="@+id/tv_telephone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:minHeight="10dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/telephone_number"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_shipping_address" />
+
+    <EditText
+        android:id="@+id/edt_telephone"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:hint="123456789"
+        android:textSize="12sp"
+        android:inputType="number"
+        android:fontFamily="@font/lato_regular"
+        android:textColor="@color/black"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:textColorHint="#A1A1A1"
+        android:background="@drawable/bg_edit_text"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_telephone" />
+    <TextView
+        android:id="@+id/tv_shipping_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:minHeight="10dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/shipping_city"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_telephone" />
+
+    <EditText
+        android:id="@+id/edt_shipping_city"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:hint="Hanoi"
+        android:textSize="12sp"
+        android:fontFamily="@font/lato_regular"
+        android:textColor="@color/black"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:textColorHint="#A1A1A1"
+        android:background="@drawable/bg_edit_text"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_shipping_city" />
+    <TextView
+        android:id="@+id/tv_discount_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:minHeight="10dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/discount_code"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_shipping_city" />
+
+    <EditText
+        android:id="@+id/edt_discount_code"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:hint="123"
+        android:textSize="12sp"
+        android:fontFamily="@font/lato_regular"
+        android:textColor="@color/black"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_10sdp"
+        android:textColorHint="#A1A1A1"
+        android:background="@drawable/bg_edit_text"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_discount_code" />
+    <TextView
+        android:id="@+id/tv_error"
+        app:layout_constraintTop_toBottomOf="@id/edt_discount_code"
+        android:text="@string/please_input_all_information_before_save_information"
+        android:textSize="12sp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textColor="#F80000"
+        android:fontFamily="@font/lato_bold"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <RelativeLayout
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        android:background="@drawable/bg_corner_30"
+        android:backgroundTint="#6342E8"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:paddingVertical="@dimen/_14sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_error">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/lato_black"
+            android:includeFontPadding="false"
+            android:text="@string/save_information"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

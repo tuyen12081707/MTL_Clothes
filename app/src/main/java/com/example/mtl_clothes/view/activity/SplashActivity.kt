@@ -20,7 +20,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, CommonVM>() {
     override fun initView() {
         Common.listOrder.clear()
         Handler(Looper.getMainLooper()).postDelayed({
-            if(Common.getLoginSuccess(this)){
+            if(Common.getUserId(this)!=""){
                 startActivity(Intent(this,MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK))
 
             }else{

@@ -1,16 +1,10 @@
-package com.example.mtl_clothes.model
+package com.example.mtl_clothes.api.res
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-class ProductModel(
-    @SerializedName("message")
-    var message: String,
-    @SerializedName("product")
-    var product: Product
-) : Serializable
 
-data class Product(
+data class ProductRes(
     @SerializedName("name")
     val name: String,
 
@@ -49,4 +43,4 @@ data class Product(
 
     @SerializedName("__v")
     val version: Int
-)
+):Serializable

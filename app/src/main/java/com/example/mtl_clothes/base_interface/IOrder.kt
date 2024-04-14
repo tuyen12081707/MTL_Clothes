@@ -1,9 +1,9 @@
 package com.example.mtl_clothes.base_interface
 
-import com.example.mtl_clothes.model.ProductModel
+import com.example.mtl_clothes.database.model.OrderModel
 
 
 interface IOrder {
-    fun callBackOrder(productModel: ProductModel)
-    fun callbackDelete(position:Int)
+    fun callBackOrder(order: OrderModel)
+    fun callbackDelete(order: OrderModel)
 }
