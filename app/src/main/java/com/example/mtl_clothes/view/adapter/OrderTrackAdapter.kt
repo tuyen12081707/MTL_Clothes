@@ -49,10 +49,25 @@ class OrderTrackAdapter(var mContext: Context) :
         return listOrderSub.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         var order = listOrderSub[position]
 
         holder.binding.tvStatus.text = order.status
+        holder.binding.tvName.text = order.products?.get(0)?.productName ?: "Áo"
+        holder.binding.tvQuantity.text = "x${order.products?.get(0)?.quantity?:"1"}"
+        holder.binding.tvTotalPrices.text = ConvertCurrency.getInstance().convertToUSD(order.totalPrice.toFloat())
+        holder.binding.tvAddress.text = order.shippingAddress
+        try {
+            Glide.with(mContext)
+                .load(order.products?.get(0)?.listPhoto?.get(0))
+                .into(holder.binding.imgPicture)
+        }catch (e:Exception){
+            Glide.with(mContext)
+                .load(R.drawable.img_clothes)
+                .into(holder.binding.imgPicture)
+        }
+
     }
 
 

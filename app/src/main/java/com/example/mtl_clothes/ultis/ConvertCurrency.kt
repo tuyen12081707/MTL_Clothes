@@ -12,6 +12,6 @@ class ConvertCurrency private constructor() {
     }
 
     fun convertToUSD(amount: Float): String {
-        return "$" + String.format("%.2f", amount.toDouble()) + " USD"
+        return   String.format("%.2f", amount.toDouble()) + " VND"
     }
 }

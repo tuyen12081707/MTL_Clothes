@@ -16,7 +16,7 @@ class OrderSub {
     val userId: String? = null
 
     @SerializedName("products")
-    val products: ArrayList<ProductOrderRes>? = null
+    val products: ArrayList<Product>? = null
 
     @SerializedName("totalPriceProduct")
     val totalPriceProduct = 0
@@ -52,4 +52,10 @@ class OrderSub {
     val version: Int = 0
 }
 
-
+data class Product(
+    @SerializedName("photos") var listPhoto :ArrayList<String>,
+    @SerializedName("productId") val productId: String,
+    @SerializedName("quantity") val quantity: Int,
+    @SerializedName("_id") val id: String,
+    @SerializedName("productName") val productName:String
+)

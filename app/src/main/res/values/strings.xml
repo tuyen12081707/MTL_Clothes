@@ -92,4 +92,6 @@
     <string name="continue_shopping">continue shopping</string>
     <string name="delivery_address">Delivery Address</string>
     <string name="promo_card">Promo card</string>
+    <string name="order_details">Order Details</string>
+    <string name="api_key">AIzaSyDldpbwyRoY5KqQ3A95zirE9qgHuPhtLiM</string>
 </resources>

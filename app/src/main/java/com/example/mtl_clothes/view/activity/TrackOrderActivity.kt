@@ -10,6 +10,9 @@ import com.example.mtl_clothes.viewmodel.TrackVM
 class TrackOrderActivity : BaseActivity<ActivityTrackOrderBinding, TrackVM>() {
     private lateinit var adapter: OrderTrackAdapter
     override fun initView() {
+        binding.ivBack.setOnClickListener{
+            finish()
+        }
         adapter = OrderTrackAdapter(this)
         binding.rcvOrderTrack.adapter = adapter
         Common.getUserId(this)?.let { viewModel.getAllOrder(this, it) }

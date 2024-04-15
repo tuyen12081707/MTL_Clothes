@@ -11,7 +11,7 @@ import com.example.mtl_clothes.databinding.ActivitySucessBinding
 import com.example.mtl_clothes.ultis.Common
 import com.example.mtl_clothes.viewmodel.CommonVM
 
-class SucessActivity : BaseActivity<ActivitySucessBinding,CommonVM>() {
+class SucessActivity : BaseActivity<ActivitySucessBinding, CommonVM>() {
 
 
     override fun initView() {
@@ -36,7 +36,7 @@ class SucessActivity : BaseActivity<ActivitySucessBinding,CommonVM>() {
             )
         }
         binding.btnTrackOrder.setOnClickListener {
-
+            startActivity(Intent(this@SucessActivity, TrackOrderActivity::class.java))
         }
     }
 
