@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_corner_10"
+    android:layout_marginVertical="@dimen/_10sdp"
+    android:backgroundTint="@color/white"
+    android:padding="@dimen/_10sdp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:fontFamily="@font/lato_regular"
+        android:text="Delivery"
+        android:textColor="#BF0808"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_picture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/img_clothes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_status" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Áo Màu Hồng"
+        android:textColor="@color/black"
+        android:fontFamily="@font/lato_black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/img_picture"
+        app:layout_constraintTop_toTopOf="@+id/img_picture" />
+
+    <TextView
+        android:id="@+id/tv_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x1"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:fontFamily="@font/lato_black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hà Nội"
+        android:fontFamily="@font/lato_regular"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/img_picture"
+        app:layout_constraintTop_toBottomOf="@+id/tv_quantity" />
+
+    <TextView
+        android:id="@+id/tv_total_prices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="18sp"
+        android:text="Total money : 20000$"
+        android:fontFamily="@font/lato_black"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+</androidx.constraintlayout.widget.ConstraintLayout>

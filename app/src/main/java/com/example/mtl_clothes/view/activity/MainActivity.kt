@@ -52,6 +52,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         binding.ivClose.setOnClickListener {
             openDrawer(false)
         }
+        binding.btnOrder.setOnClickListener {
+            resultLauncher.launch(Intent(this, TrackOrderActivity::class.java))
+        }
         binding.logout.setOnClickListener {
             Common.clearLoginRes(this)
             Common.setUserID(this, "")
@@ -78,9 +81,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         if (Common.listOrder.isNotEmpty()) {
             binding.ivCountOrder.setVisible(true)
             binding.ivCountOrder.text = Common.listOrder.size.toString()
-            binding.btnOrder.setOnClickListener {
-                resultLauncher.launch(Intent(this, OrderActivity::class.java))
-            }
+
         } else {
             binding.ivCountOrder.setVisible(false)
 

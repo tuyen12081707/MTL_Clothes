@@ -6,6 +6,7 @@ import com.example.mtl_clothes.api.req.ProductReq
 import com.example.mtl_clothes.api.req.RegisterReq
 import com.example.mtl_clothes.api.res.LoginRes
 import com.example.mtl_clothes.api.res.OrderRes
+import com.example.mtl_clothes.api.res.OrderTrackRes
 import com.example.mtl_clothes.api.res.ProductRes
 import com.example.mtl_clothes.api.res.RegisterRes
 import retrofit2.Call
@@ -41,4 +42,10 @@ interface APIServices {
     fun postOrder(
         @Body orderReq: OrderReq
     ): Call<OrderRes>
+
+    @Headers("Content-Type: application/json")
+    @GET("orders/{userId}")
+    fun getAllOrder(
+        @Path("userId") userId: String
+    ): Call<OrderTrackRes>
 }
