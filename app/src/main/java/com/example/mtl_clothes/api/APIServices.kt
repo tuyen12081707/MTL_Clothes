@@ -3,9 +3,11 @@ package com.example.mtl_clothes.api
 import com.example.mtl_clothes.api.req.LoginReq
 import com.example.mtl_clothes.api.req.OrderReq
 import com.example.mtl_clothes.api.req.ProductReq
+import com.example.mtl_clothes.api.req.RegisterReq
 import com.example.mtl_clothes.api.res.LoginRes
 import com.example.mtl_clothes.api.res.OrderRes
 import com.example.mtl_clothes.api.res.ProductRes
+import com.example.mtl_clothes.api.res.RegisterRes
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -29,7 +31,11 @@ interface APIServices {
     fun getApiLogin(
         @Body accountInfo: LoginReq
     ): Call<LoginRes>
-
+    @Headers("Content-Type: application/json")
+    @POST("auth/register")
+    fun postRegister(
+        @Body registerReq: RegisterReq
+    ): Call<RegisterRes>
     @Headers("Content-Type: application/json")
     @POST("checkout")
     fun postOrder(

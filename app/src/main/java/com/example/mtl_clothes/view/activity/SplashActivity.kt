@@ -14,11 +14,13 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.mtl_clothes.R
 import com.example.mtl_clothes.databinding.ActivitySplashBinding
 import com.example.mtl_clothes.ultis.Common
+import com.example.mtl_clothes.ultis.Common.countRate
 import com.example.mtl_clothes.viewmodel.CommonVM
 
 class SplashActivity : BaseActivity<ActivitySplashBinding, CommonVM>() {
     override fun initView() {
         Common.listOrder.clear()
+        countRate = 1
         Handler(Looper.getMainLooper()).postDelayed({
             if(Common.getUserId(this)!=""){
                 startActivity(Intent(this,MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK))

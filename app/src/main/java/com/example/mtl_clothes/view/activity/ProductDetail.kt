@@ -20,7 +20,7 @@ import com.example.mtl_clothes.viewmodel.ProductDetailVM
 
 class ProductDetail : BaseActivity<ActivityProductDetailBinding, ProductDetailVM>(),
     View.OnClickListener {
-    private  var productDetail:ProductRes?=null
+    private var productDetail: ProductRes? = null
     private var listSize: MutableList<String> = mutableListOf("S", "M", "L", "XL", "XXL")
     private var quantity = 10
     var isSizeS = true
@@ -29,8 +29,9 @@ class ProductDetail : BaseActivity<ActivityProductDetailBinding, ProductDetailVM
     var isSizeXL = true
     var isSizeXXL = true
     override fun initView() {
-
-       var productId = intent.getStringExtra(Common.KEY_PRODUCT_ORDER)
+        binding.tvName.isSelected = true
+        binding.tvPrices.isSelected = true
+        var productId = intent.getStringExtra(Common.KEY_PRODUCT_ORDER)
         productId?.let { Log.d("productid==", it) }
         if (productId != null) {
             viewModel.getAllProduct(this, productId!!)
@@ -211,7 +212,7 @@ class ProductDetail : BaseActivity<ActivityProductDetailBinding, ProductDetailVM
         } else if (view is RelativeLayout) {
             if (view.id == R.id.btn_add) {
                 var order = OrderModel()
-                if(productDetail!=null){
+                if (productDetail != null) {
                     order.quantity_order = binding.tvNumber.text.toString().trim().toInt()
                     order.id = productDetail!!.id
                     order.name = productDetail!!.name
@@ -229,7 +230,7 @@ class ProductDetail : BaseActivity<ActivityProductDetailBinding, ProductDetailVM
                 }
                 Log.d("order===", order.order_id.toString())
 
-                DatabaseRepository.insertOrder(this,order,object: InsertCallBack{
+                DatabaseRepository.insertOrder(this, order, object : InsertCallBack {
                     override fun onSucess() {
                         startActivity(Intent(this@ProductDetail, OrderActivity::class.java))
                     }

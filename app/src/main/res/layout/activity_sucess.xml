@@ -72,6 +72,7 @@
         android:layout_height="wrap_content"
         android:paddingVertical="20dp"
         android:text="@string/continue_shopping"
+        android:textColor="@color/white"
         android:backgroundTint="#6342E8"
         android:textAllCaps="true"
         android:layout_marginBottom="@dimen/_20sdp"

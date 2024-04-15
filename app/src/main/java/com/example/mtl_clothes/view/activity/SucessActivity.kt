@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.mtl_clothes.R
 import com.example.mtl_clothes.databinding.ActivitySucessBinding
+import com.example.mtl_clothes.ultis.Common
 import com.example.mtl_clothes.viewmodel.CommonVM
 
 class SucessActivity : BaseActivity<ActivitySucessBinding,CommonVM>() {
@@ -17,6 +18,7 @@ class SucessActivity : BaseActivity<ActivitySucessBinding,CommonVM>() {
         binding.ivBack.setOnClickListener {
             finish()
         }
+        Common.countRate++
         binding.tvBackToHome.setOnClickListener {
             startActivity(
                 Intent(

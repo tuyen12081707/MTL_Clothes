@@ -15,6 +15,10 @@ class IntroActivity : BaseActivity<ActivityIntroBinding,CommonVM>() {
             startActivity(Intent(this,LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK))
 
         }
+        binding.btnRegister.setOnClickListener {
+            startActivity(Intent(this,ResgiterActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+
+        }
     }
 
     override fun getClassVM(): Class<CommonVM> {

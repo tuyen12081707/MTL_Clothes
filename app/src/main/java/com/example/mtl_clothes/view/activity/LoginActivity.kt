@@ -7,13 +7,15 @@ import com.example.mtl_clothes.ultis.Common
 import com.example.mtl_clothes.viewmodel.LoginVM
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginVM>() {
+    var isClick = true
     override fun initView() {
         var isComeOrder = intent.getBooleanExtra(Common.KEY_COME_ORDER, false)
         binding.btnLogin.setOnClickListener {
-
+        if(isClick){
             if (binding.edtEmail.text.toString()
-                    .trim() != "" && binding.edtPassword.text.toString().trim() != "123456"
+                    .trim() != "" && binding.edtPassword.text.toString().trim() != ""
             ) {
+                isClick = false
                 var email = binding.edtEmail.text.toString()
                 var password = binding.edtPassword.text.toString()
                 viewModel.postLogin(this@LoginActivity, email, password)
@@ -22,8 +24,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginVM>() {
                 Toast.makeText(this, "Invalid email or password!", Toast.LENGTH_SHORT).show()
             }
         }
+
+        }
         viewModel.liveDataLogin.observe(this) {
             if (it != null) {
+                isClick = true
                 Common.setBearerToken(this@LoginActivity, it.token)
                 Common.setUserID(this@LoginActivity,it.user.id)
                 Common.saveLoginRes(this,it)

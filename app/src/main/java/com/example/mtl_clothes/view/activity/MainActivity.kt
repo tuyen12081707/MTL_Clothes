@@ -32,6 +32,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         }
 
     override fun initView() {
+        if (Common.countRate % 2 == 0) {
+            Common.showRate(this)
+        }
         //callapi product
         viewModel.getAllProduct(this)
         showDialog(this)
@@ -51,8 +54,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
         }
         binding.logout.setOnClickListener {
             Common.clearLoginRes(this)
-            Common.setUserID(this,"")
-            Common.setBearerToken(this,"")
+            Common.setUserID(this, "")
+            Common.setBearerToken(this, "")
             binding.tvName.text = "Admin"
             binding.tvEmail.text = "admin123@gmail.com"
 
@@ -61,6 +64,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainVM>() {
 
         }
     }
+
     fun openDrawer(isOpen: Boolean) {
         if (isOpen) {
             binding.drawerLayout.openDrawer(GravityCompat.END)

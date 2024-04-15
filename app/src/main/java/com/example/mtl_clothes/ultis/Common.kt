@@ -1,8 +1,13 @@
 package com.example.mtl_clothes.ultis
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import com.codemybrainsout.ratingdialog.MaybeLaterCallback
+import com.codemybrainsout.ratingdialog.RateButtonCallback
+import com.codemybrainsout.ratingdialog.RatingDialog
+import com.example.mtl_clothes.R
 import com.example.mtl_clothes.api.res.LoginRes
 import com.example.mtl_clothes.api.res.ProductRes
 import com.google.gson.Gson
@@ -14,6 +19,7 @@ object Common {
     val KEY_COME_ORDER = "KEY_COME_ORDER"
     @JvmStatic
     var listOrder: MutableList<ProductRes> = mutableListOf()
+    var countRate = 1
 
     private const val KEY_LOGIN_RES = "login_res"
 
@@ -28,6 +34,29 @@ object Common {
         }
 
     }
+    @JvmStatic
+    fun showRate(context: Context) {
+        val ratingDialog: RatingDialog = RatingDialog.Builder(context as Activity)
+            .session(1)
+            .date(1)
+            .setNameApp(context.getString(R.string.app_name))
+            .setIcon(R.drawable.img_logo)
+            .setEmail("duonghuynh0240@gmail.com")
+            .setOnlickRate(RateButtonCallback { rate ->
+            })
+            .ignoreRated(false)
+            .isShowButtonLater(true)
+            .isClickLaterDismiss(true)
+            .setTextButtonLater("Maybe Later")
+            .setOnlickMaybeLate(MaybeLaterCallback {
+
+            })
+            .ratingButtonColor(R.color.black)
+            .build()
+        ratingDialog.setCanceledOnTouchOutside(false)
+        ratingDialog.show()
+    }
+
     fun clearLoginRes(mContext: Context) {
         val preferences = mContext.getSharedPreferences(mContext.packageName, Context.MODE_PRIVATE)
         preferences.edit().remove(KEY_LOGIN_RES).apply()
